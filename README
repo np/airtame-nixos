@@ -1,0 +1,5 @@
+$ wget https://airtame.com/linux
+$ mkdir AIRTAME-v1.0.2-13_x64/
+$ tar -C AIRTAME-v1.0.2-13_x64/ -xzf AIRTAME-v1.0.2-13_x64.tar.gz
+$ nix-build
+$ ./result/bin/launch-airtame
