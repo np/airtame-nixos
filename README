@@ -1,5 +1,29 @@
-$ wget https://airtame.com/linux
-$ mkdir AIRTAME-v1.0.2-13_x64/
-$ tar -C AIRTAME-v1.0.2-13_x64/ -xzf AIRTAME-v1.0.2-13_x64.tar.gz
+
+
+# How to update to a different version
+
+Pick your channel (ga, beta, alpha)
+
+$ CHANNEL=ga
+
+Head over https://downloads.airtame.com/application/$CHANNEL/lin_x64/releases/deb/
+and set the version number you want:
+
+$ VERSION=2.0.3
+
+Download the .deb package using:
+
+$ nix-prefetch-url https://downloads.airtame.com/application/$CHANNEL/lin_x64/releases/deb/airtame-application_${VERSION}_amd64.deb
+
+Get the generated hash and edit airtame-nw.nix version numbers and hash in the "src = {...}" block.
+Now you can build the nix package:
+
 $ nix-build
+
+You can then run the freshly built version:
+
 $ ./result/bin/launch-airtame
+
+Or install it:
+
+$ nix-env -f . -i
